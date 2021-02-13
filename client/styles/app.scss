@@ -1,0 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Truculenta:wght@300;400;600;700&display=swap');
+
+@import './typo.scss';
+
+body {
+    background: #111;
+    color: #efefef;
+    font-family: 'Truculenta', sans-serif;
+    margin: 0;
+}
+
+body {
+    font-size: map-get($typoSizes, small);
+}
+
+@each $key, $value in $typoSizes {
+    .typo-#{$key} {
+        font-size: $value;
+    } 
+ }
