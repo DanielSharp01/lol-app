@@ -2,6 +2,7 @@ import fetch from 'node-fetch';
 import { RequestScheduler } from '../request-scheduler/RequestScheduler';
 import { ActiveGame } from './models/ActiveGame';
 import { safeLong } from './models/constants';
+import { LeagueEntry } from './models/LeagueEntry';
 import { Match } from './models/Match';
 import { MatchTimeline } from './models/MatchTimeline';
 import { MathListResponse } from './models/MathList';
@@ -52,6 +53,12 @@ export class RiotApi {
         return this.requestScheduler.request(() =>
             fetch(`${this.platform}/lol/match/v4/timelines/by-match/${gameId}/?api_key=${this.token}`)
                 .then(res => res.json()))
+    }
+
+    requestSummonerLeagueEntires(summonerId: string): Promise<Array<LeagueEntry>> {
+        return this.requestScheduler.request(() =>
+            fetch(`${this.platform}/lol/league/v4/entries/by-summoner/${summonerId}/?api_key=${this.token}`))
+            .then(res => res.json())
     }
 
     requestMatchList(
