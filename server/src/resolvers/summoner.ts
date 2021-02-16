@@ -2,7 +2,7 @@ import { LoLAppContext } from "../LoLAppContext";
 import { Arg, Ctx, FieldResolver, Query, Resolver, Root } from "type-graphql";
 import { LeagueEntry, Summoner } from "../entities/Summoner";
 
-@Resolver(of => Summoner)
+@Resolver(() => Summoner)
 export class SummonerResolver {
     @Query(() => Summoner)
     async summonerByName(@Ctx() { riotApi }: LoLAppContext, @Arg('name') name: string): Promise<Summoner> {

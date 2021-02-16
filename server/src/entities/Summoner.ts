@@ -1,12 +1,12 @@
-import { Field, ObjectType } from "type-graphql";
+import { Field, Int, ObjectType } from "type-graphql";
 
 @ObjectType()
 export class Promo {
-    @Field()
+    @Field(() => Int)
     wins: number;
-    @Field()
+    @Field(() => Int)
     losses: number;
-    @Field()
+    @Field(() => Int)
     games: number;
 }
 
@@ -16,7 +16,7 @@ export class LeagueEntry {
     tier: string;
     @Field()
     division: string;
-    @Field()
+    @Field(() => Int)
     lp: number;
 
     @Field({ nullable: true })
@@ -34,13 +34,13 @@ export class Summoner {
     @Field()
     name: string;
 
-    @Field()
+    @Field(() => Int)
     profileIconId: number;
 
     @Field()
     profileIcon: string;
 
-    @Field()
+    @Field(() => Int)
     summonerLevel: number;
 
     @Field({ nullable: true })
