@@ -1,0 +1,159 @@
+@import '../styles/colors.scss';
+@import '../styles/typo.scss';
+
+.card {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    position: relative;
+    >:not(:first-child) {
+        margin-left: 12px;
+
+        &.stats {
+            margin-left: 24px;
+        }
+    }
+}
+
+.mirror {
+    >:not(:first-child) {
+        margin-right: 12px;
+        margin-left: 0;
+
+        &.stats {
+            margin-right: 24px;
+            margin-left: 0;
+        }
+    }
+    >:nth-child(1) {
+        order: 5;
+    }
+    >:nth-child(2) {
+        order: 4;
+    }
+    >:nth-child(3) {
+        order: 3;
+    }
+    >:nth-child(4) {
+        order: 2;
+    }
+    >:nth-child(5) {
+        order: 1;
+    }
+}
+
+.profile {
+    position: relative;
+}
+
+.summonerInfo {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+}
+
+.rankIndicator {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    >:not(:first-child) {
+        margin-left: 4px;
+    }
+}
+
+.stats {
+    display: flex;
+    flex-direction: column;
+}
+
+.items {
+    display: flex;
+    flex-direction: row;
+    width: 36px * 3;
+    flex-wrap: wrap;
+    margin-left: -4px;
+}
+
+.item {
+    margin-left: 4px;
+    width: 32px;
+    height: 32px;
+    border: 1px solid rgba($gold, 0.2);
+    box-sizing: border-box;
+    background-color: $overlay;
+}
+
+$levelDiamond: 20px;
+
+.level {
+    position: absolute;
+    top: 36px;
+    left: 50%;
+    transform: translate(-50%, 0);
+    box-sizing: border-box;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: $gold;
+    height: $levelDiamond;
+    width: $levelDiamond - 2px;
+
+    &:before {
+        position: absolute;
+        right: $levelDiamond - 2px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: $levelDiamond / 2 solid transparent;
+        border-right: $levelDiamond / 2 + 1px solid $gold;
+        border-bottom: $levelDiamond / 2 solid transparent;
+    }
+
+    &:after {
+        position: absolute;
+        left: $levelDiamond - 2px;
+        content: '';
+        width: 0;
+        height: 0;
+        border-top: $levelDiamond / 2 solid transparent;
+        border-left: $levelDiamond / 2 + 1px solid $gold;
+        border-bottom: $levelDiamond / 2 solid transparent;
+    }
+
+    >div {
+        background: $overlay;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        width: $levelDiamond - 4px;
+        height: $levelDiamond - 4px;
+        position: relative;
+
+        span {
+            font-size: map-get($typoSizes, small);
+        }
+
+        &:before {
+            position: absolute;
+            right: $levelDiamond - 4px;
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: ($levelDiamond - 4px) / 2 solid transparent;
+            border-right: ($levelDiamond - 4px) / 2 + 1px solid $overlay;
+            border-bottom: ($levelDiamond - 4px) / 2 solid transparent;
+        }
+    
+        &:after {
+            position: absolute;
+            left: $levelDiamond - 4px;
+            content: '';
+            width: 0;
+            height: 0;
+            border-top: ($levelDiamond - 4px) / 2 solid transparent;
+            border-left: ($levelDiamond - 4px) / 2 + 1px solid $overlay;
+            border-bottom: ($levelDiamond - 4px) / 2 solid transparent;
+            z-index: 1;
+        }
+    }
+}

@@ -1,2 +1,17 @@
-$green: #1aa343;
-$gray: #77837a;
+$colors: (
+    green: #1aa343,
+    red: #a31a43,
+    gold: #815e0e,
+    gray: #77837a,
+    background: #202020,
+    overlay: #1e1e1e,
+    foreground: #ecdfce,
+);
+
+$green: map-get($colors, green);
+$red: map-get($colors, red);
+$gold: map-get($colors, gold);
+$gray: map-get($colors, gray);
+$background: map-get($colors, background);
+$overlay: map-get($colors, overlay);
+$foreground: map-get($colors, foreground);

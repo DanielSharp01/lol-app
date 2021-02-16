@@ -7,6 +7,12 @@ import { RequestScheduler } from "./request-scheduler/RequestScheduler";
 import { DataDragon } from "./riot-api/DataDragon";
 import { RiotApi } from "./riot-api/RiotApi";
 import { SummonerResolver } from "./resolvers/summoner";
+import { MatchResolver } from "./resolvers/match";
+import { MatchSummonerResolver } from "./resolvers/matchSummoner";
+import { SummonerSpellResolver } from "./resolvers/summonerSpell";
+import { ItemResolver } from "./resolvers/item";
+import { KeystoneResolver } from "./resolvers/keystone";
+import { ChampionResolver } from "./resolvers/champion";
 
 (async () => {
     const orm = await MikroORM.init(config);
@@ -19,7 +25,7 @@ import { SummonerResolver } from "./resolvers/summoner";
     const port = process.env.PORT ?? 4000;
     const apolloServer = new ApolloServer({
         schema: await buildSchema({
-            resolvers: [SummonerResolver],
+            resolvers: [SummonerResolver, MatchResolver, MatchSummonerResolver, SummonerSpellResolver, ItemResolver, KeystoneResolver, ChampionResolver ],
             validate: false,
         }),
         context: ({ req, res }) => ({ em: orm.em, riotApi, dataDragon, req, res }),
